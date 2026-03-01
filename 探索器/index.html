@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>景点推荐探索器 - 广东</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <!-- 右上角筛选按钮 -->
+      <button id="filter-btn" class="filter-btn">筛选</button>
+    </header>
+    <main>
+      <!-- 大标题 - 位置往上提 -->
+      <h1 class="title">景点推荐探索器</h1>
+
+      <!-- 中央搜索框 - 位置往上提 -->
+      <div class="search-container">
+        <input
+          type="text"
+          class="search-box"
+          id="search-box"
+          placeholder="搜索景点或区域..."
+        />
+        <button class="search-btn" id="search-btn">
+          <span class="search-icon">🔍</span>
+        </button>
+
+        <!-- 热搜榜下拉容器 -->
+        <div class="hot-search-dropdown" id="hot-search-dropdown">
+          <div class="hot-search-header">
+            <span class="hot-icon">🔥</span>
+            <span>热搜榜</span>
+          </div>
+          <ul class="hot-search-list" id="hot-search-list">
+            <!-- 热搜榜内容将通过JavaScript动态生成 -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- 搜索提示文字 -->
+      <div class="search-tips">
+        <p>💡 tips: 搜索前，请先点右上角的按钮再进行搜索哦～</p>
+      </div>
+
+      <!-- 抽屉式筛选区域 -->
+      <div id="filter-drawer" class="filter-drawer hidden">
+        <ul class="city-list">
+          <li>
+            <button class="city-btn" data-city="广州">广州市</button>
+            <ul class="district-list hidden">
+              <!-- 越秀区景点 -->
+              <li>
+                <button class="district-btn" data-district="越秀区">
+                  越秀区
+                </button>
+                <ul class="attraction-list hidden">
+                  <li>
+                    <a
+                      href="attraction.html?name=北京路文化旅游区"
+                      class="attraction-link"
+                      >北京路文化旅游区</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=广州中山纪念堂"
+                      class="attraction-link"
+                      >广州中山纪念堂</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=越秀公园"
+                      class="attraction-link"
+                      >越秀公园（含五羊石像）</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 海珠区景点 -->
+              <li>
+                <button class="district-btn" data-district="海珠区">
+                  海珠区
+                </button>
+                <ul class="attraction-list hidden">
+                  <li>
+                    <a
+                      href="attraction.html?name=海珠国家湿地公园"
+                      class="attraction-link"
+                      >海珠国家湿地公园</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=太古仓"
+                      class="attraction-link"
+                      >太古仓</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 荔湾区景点 -->
+              <li>
+                <button class="district-btn" data-district="荔湾区">
+                  荔湾区
+                </button>
+                <ul class="attraction-list hidden">
+                  <li>
+                    <a
+                      href="attraction.html?name=沙面岛"
+                      class="attraction-link"
+                      >沙面岛</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=陈家祠"
+                      class="attraction-link"
+                      >陈家祠</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 天河区景点 -->
+              <li>
+                <button class="district-btn" data-district="天河区">
+                  天河区
+                </button>
+                <ul class="attraction-list hidden">
+                  <li>
+                    <a
+                      href="attraction.html?name=广州塔"
+                      class="attraction-link"
+                      >广州塔</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=花城广场"
+                      class="attraction-link"
+                      >花城广场、正佳广场</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=广东省博物馆"
+                      class="attraction-link"
+                      >广东省博物馆</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=华南植物园"
+                      class="attraction-link"
+                      >华南植物园</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 白云区景点 -->
+              <li>
+                <button class="district-btn" data-district="白云区">
+                  白云区
+                </button>
+                <ul class="attraction-list hidden">
+                  <li>
+                    <a
+                      href="attraction.html?name=白云山"
+                      class="attraction-link"
+                      >白云山风景名胜区</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=云台花园"
+                      class="attraction-link"
+                      >云台花园</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 黄埔区景点 -->
+              <li>
+                <button class="district-btn" data-district="黄埔区">
+                  黄埔区
+                </button>
+                <ul class="attraction-list hidden">
+                  <li>
+                    <a
+                      href="attraction.html?name=黄埔军校"
+                      class="attraction-link"
+                      >黄埔军校旧址纪念馆</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=南海神庙"
+                      class="attraction-link"
+                      >南海神庙</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 花都区景点 -->
+              <li>
+                <button class="district-btn" data-district="花都区">
+                  花都区
+                </button>
+                <ul class="attraction-list hidden">
+                  <li>
+                    <a
+                      href="attraction.html?name=广州融创文旅城"
+                      class="attraction-link"
+                      >广州融创文旅城</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=洪秀全故居"
+                      class="attraction-link"
+                      >洪秀全故居</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 番禺区景点 -->
+              <li>
+                <button class="district-btn" data-district="番禺区">
+                  番禺区
+                </button>
+                <ul class="attraction-list hidden">
+                  <li>
+                    <a
+                      href="attraction.html?name=长隆旅游度假区"
+                      class="attraction-link"
+                      >长隆旅游度假区（野生动物世界，欢乐世界，水上乐园，飞鸟乐园）</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=莲花山"
+                      class="attraction-link"
+                      >莲花山旅游区</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=宝墨园"
+                      class="attraction-link"
+                      >宝墨园</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 南沙区景点 -->
+              <li>
+                <button class="district-btn" data-district="南沙区">
+                  南沙区
+                </button>
+                <ul class="attraction-list hidden">
+                  <li>
+                    <a
+                      href="attraction.html?name=南沙天后宫"
+                      class="attraction-link"
+                      >南沙天后宫</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=南沙湿地公园"
+                      class="attraction-link"
+                      >南沙湿地公园</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=百万葵园"
+                      class="attraction-link"
+                      >百万葵园</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 从化区景点 -->
+              <li>
+                <button class="district-btn" data-district="从化区">
+                  从化区
+                </button>
+                <ul class="attraction-list hidden">
+                  <li>
+                    <a
+                      href="attraction.html?name=从化温泉"
+                      class="attraction-link"
+                      >从化温泉风景区</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=流溪河国家森林公园"
+                      class="attraction-link"
+                      >流溪河国家森林公园</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=石门国家森林公园"
+                      class="attraction-link"
+                      >石门国家森林公园</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 增城区景点 -->
+              <li>
+                <button class="district-btn" data-district="增城区">
+                  增城区
+                </button>
+                <ul class="attraction-list hidden">
+                  <li>
+                    <a
+                      href="attraction.html?name=白水寨"
+                      class="attraction-link"
+                      >白水寨风景名胜区</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="attraction.html?name=1978电影小镇"
+                      class="attraction-link"
+                      >1978电影小镇</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <!-- 深圳市 -->
+          <li>
+            <button class="city-btn" data-city="深圳">深圳市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="福田区">
+                  福田区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="罗湖区">
+                  罗湖区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="南山区">
+                  南山区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="宝安区">
+                  宝安区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="龙岗区">
+                  龙岗区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="盐田区">
+                  盐田区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="龙华区">
+                  龙华区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="坪山区">
+                  坪山区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="光明区">
+                  光明区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="大鹏新区">
+                  大鹏新区
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 珠海市 -->
+          <li>
+            <button class="city-btn" data-city="珠海">珠海市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="香洲区">
+                  香洲区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="金湾区">
+                  金湾区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="斗门区">
+                  斗门区
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 汕头市 -->
+          <li>
+            <button class="city-btn" data-city="汕头">汕头市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="金平区">
+                  金平区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="龙湖区">
+                  龙湖区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="濠江区">
+                  濠江区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="潮阳区">
+                  潮阳区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="潮南区">
+                  潮南区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="澄海区">
+                  澄海区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="南澳县">
+                  南澳县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 佛山市 -->
+          <li>
+            <button class="city-btn" data-city="佛山">佛山市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="禅城区">
+                  禅城区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="南海区">
+                  南海区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="顺德区">
+                  顺德区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="三水区">
+                  三水区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="高明区">
+                  高明区
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 韶关市 -->
+          <li>
+            <button class="city-btn" data-city="韶关">韶关市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="浈江区">
+                  浈江区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="武江区">
+                  武江区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="曲江区">
+                  曲江区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="乐昌市">
+                  乐昌市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="南雄市">
+                  南雄市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="始兴县">
+                  始兴县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="仁化县">
+                  仁化县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="翁源县">
+                  翁源县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="新丰县">
+                  新丰县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="乳源瑶族自治县">
+                  乳源瑶族自治县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 湛江市 -->
+          <li>
+            <button class="city-btn" data-city="湛江">湛江市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="赤坎区">
+                  赤坎区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="霞山区">
+                  霞山区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="坡头区">
+                  坡头区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="麻章区">
+                  麻章区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="廉江市">
+                  廉江市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="雷州市">
+                  雷州市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="吴川市">
+                  吴川市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="遂溪县">
+                  遂溪县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="徐闻县">
+                  徐闻县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 肇庆市 -->
+          <li>
+            <button class="city-btn" data-city="肇庆">肇庆市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="端州区">
+                  端州区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="鼎湖区">
+                  鼎湖区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="高要区">
+                  高要区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="四会市">
+                  四会市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="广宁县">
+                  广宁县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="怀集县">
+                  怀集县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="封开县">
+                  封开县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="德庆县">
+                  德庆县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 江门市 -->
+          <li>
+            <button class="city-btn" data-city="江门">江门市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="蓬江区">
+                  蓬江区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="江海区">
+                  江海区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="新会区">
+                  新会区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="台山市">
+                  台山市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="开平市">
+                  开平市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="鹤山市">
+                  鹤山市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="恩平市">
+                  恩平市
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 茂名市 -->
+          <li>
+            <button class="city-btn" data-city="茂名">茂名市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="茂南区">
+                  茂南区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="电白区">
+                  电白区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="高州市">
+                  高州市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="化州市">
+                  化州市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="信宜市">
+                  信宜市
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 惠州市 -->
+          <li>
+            <button class="city-btn" data-city="惠州">惠州市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="惠城区">
+                  惠城区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="惠阳区">
+                  惠阳区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="博罗县">
+                  博罗县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="惠东县">
+                  惠东县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="龙门县">
+                  龙门县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 梅州市 -->
+          <li>
+            <button class="city-btn" data-city="梅州">梅州市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="梅江区">
+                  梅江区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="梅县区">
+                  梅县区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="兴宁市">
+                  兴宁市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="大埔县">
+                  大埔县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="丰顺县">
+                  丰顺县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="五华县">
+                  五华县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="平远县">
+                  平远县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="蕉岭县">
+                  蕉岭县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 汕尾市 -->
+          <li>
+            <button class="city-btn" data-city="汕尾">汕尾市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="城区">城区</button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="陆丰市">
+                  陆丰市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="海丰县">
+                  海丰县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="陆河县">
+                  陆河县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 河源市 -->
+          <li>
+            <button class="city-btn" data-city="河源">河源市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="源城区">
+                  源城区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="紫金县">
+                  紫金县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="龙川县">
+                  龙川县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="连平县">
+                  连平县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="和平县">
+                  和平县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="东源县">
+                  东源县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 阳江市 -->
+          <li>
+            <button class="city-btn" data-city="阳江">阳江市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="江城区">
+                  江城区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="阳东区">
+                  阳东区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="阳春市">
+                  阳春市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="阳西县">
+                  阳西县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 清远市 -->
+          <li>
+            <button class="city-btn" data-city="清远">清远市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="清城区">
+                  清城区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="清新区">
+                  清新区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="英德市">
+                  英德市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="连州市">
+                  连州市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="佛冈县">
+                  佛冈县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="阳山县">
+                  阳山县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="连山壮族瑶族自治县">
+                  连山壮族瑶族自治县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="连南瑶族自治县">
+                  连南瑶族自治县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 东莞市 -->
+          <li>
+            <button class="city-btn" data-city="东莞">东莞市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="莞城区">
+                  莞城区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="南城区">
+                  南城区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="东城区">
+                  东城区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="万江区">
+                  万江区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="石碣镇">
+                  石碣镇
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="石龙镇">
+                  石龙镇
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="茶山镇">
+                  茶山镇
+                </button>
+              </li>
+              <!-- 注：东莞没有区县级行政区，只有镇和街道 -->
+            </ul>
+          </li>
+          <!-- 中山市 -->
+          <li>
+            <button class="city-btn" data-city="中山">中山市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="石岐区">
+                  石岐区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="东区">东区</button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="西区">西区</button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="南区">南区</button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="五桂山区">
+                  五桂山区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="火炬开发区">
+                  火炬开发区
+                </button>
+              </li>
+              <!-- 注：中山没有区县级行政区，只有镇和街道 -->
+            </ul>
+          </li>
+          <!-- 潮州市 -->
+          <li>
+            <button class="city-btn" data-city="潮州">潮州市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="湘桥区">
+                  湘桥区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="潮安区">
+                  潮安区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="饶平县">
+                  饶平县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 揭阳市 -->
+          <li>
+            <button class="city-btn" data-city="揭阳">揭阳市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="榕城区">
+                  榕城区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="揭东区">
+                  揭东区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="普宁市">
+                  普宁市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="揭西县">
+                  揭西县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="惠来县">
+                  惠来县
+                </button>
+              </li>
+            </ul>
+          </li>
+          <!-- 云浮市 -->
+          <li>
+            <button class="city-btn" data-city="云浮">云浮市</button>
+            <ul class="district-list hidden">
+              <li>
+                <button class="district-btn" data-district="云城区">
+                  云城区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="云安区">
+                  云安区
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="罗定市">
+                  罗定市
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="新兴县">
+                  新兴县
+                </button>
+              </li>
+              <li>
+                <button class="district-btn" data-district="郁南县">
+                  郁南县
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer class="footer-buttons">
+      <div class="footer-btn-group">
+        <!-- 联系我按钮 -->
+        <button class="footer-btn" id="contact-btn">联系方式</button>
+
+        <!-- 联系抽屉 -->
+        <div class="contact-drawer hidden" id="contact-drawer">
+          <div class="contact-header">
+            <span>📞 联系方式</span>
+            <button class="close-contact-btn" id="close-contact-btn">×</button>
+          </div>
+          <div class="contact-content">
+            <div class="contact-item">
+              <span class="contact-icon">📧</span>
+              <span class="contact-label">QQ邮箱：</span>
+              <span class="contact-value" id="qq-email">1745023195@qq.com</span>
+              <button class="copy-btn" data-text="1745023195@qq.com">
+                复制
+              </button>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🎬</span>
+              <span class="contact-label">B站主页：</span>
+              <a
+                href="https://space.bilibili.com/477233243"
+                target="_blank"
+                class="contact-link"
+                >哔哩哔哩联系</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 问题反馈按钮 -->
+        <button class="footer-btn" id="feedback-btn">问题反馈</button>
+      </div>
+    </footer>
+
+    <!-- 遮罩层，用于点击外部关闭抽屉 -->
+    <div class="overlay hidden" id="overlay"></div>
+
+    <script src="js/data.js"></script>
+    <!-- 引入景点数据 -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
